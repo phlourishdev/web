@@ -4,7 +4,7 @@ hdrs =  (MarkdownJS(),
         Link(rel='stylesheet', href='assets/css/colors.css', type='text/css'),
 )
 
-app, rt = fast_app(hdrs=hdrs, live=True)
+app, rt = fast_app(hdrs=hdrs)
 
 """
 home
@@ -15,10 +15,10 @@ with open('assets/markdown/home.md') as file:
 
 @rt('/')
 def get(req):
-    return Titled("phlourish dot dev", Div(md_home,cls="marked"))
+    return Titled("phlourish dot dev", Div(md_home, cls="marked"))
 
 """
-handle 404 -> redirect to root site
+redirect 404s to root site
 """
 
 @app.exception_handler(HTTPException)
